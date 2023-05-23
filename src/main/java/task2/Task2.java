@@ -22,15 +22,10 @@ public class Task2 {
     public List<Integer[]> findPairsOfIntegersEquals13(final List<Integer> integersList) {
         List<Integer[]> pairsOfIntegersEquals13 = new ArrayList<>();
         for (int x = 0; x < integersList.size(); x++) {
-            for (int y = 0; y < integersList.size(); y++) {
-                if (x != y) {
-                    if (integersList.get(x) < integersList.get(y)) {
-                        if (isSumEquals13(integersList.get(x), integersList.get(y))) {
-                            Integer[] pair = {integersList.get(x), integersList.get(y)};
-                            pairsOfIntegersEquals13.add(pair);
-                        }
-                    }
-                }
+            Integer integer = 13 - integersList.get(x);
+            if (integer > integersList.get(x) && integersList.contains(integer)) {
+                Integer[] pair = {integersList.get(x), integer};
+                pairsOfIntegersEquals13.add(pair);
             }
         }
         return pairsOfIntegersEquals13;

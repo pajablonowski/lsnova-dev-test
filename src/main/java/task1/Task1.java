@@ -3,33 +3,33 @@ package task1;
 import java.util.*;
 
 public class Task1 {
-    public void task1(final List<Integer> integerList) {
-        System.out.println(getDistinctListValue(integerList));
-        System.out.println("count: "+ getNumberOfElementsInSource(integerList));
-        System.out.println("distinct: " + getNumberOfDistinctElements(integerList));
-        System.out.println("min: " + getMinimumListValue(integerList));
-        System.out.println("max: " + getMaximumListValue(integerList));
+
+    List<Integer> list;
+    Set<Integer> set;
+
+    LinkedList<Integer> linkedList;
+
+
+    public Task1(List<Integer> integerList) {
+        this.list = integerList;
+        this.set = convertListIntoSet(integerList);
+        this.linkedList = convertSetIntoLinkedList(set);
     }
 
-    public Set<Integer> getDistinctListValue(final List<Integer> integerList) {
-        return new HashSet<>(integerList);
+    public void task1() {
+        System.out.println(set);
+        System.out.println("count: "+ list.size());
+        System.out.println("distinct: " + set.size());
+        System.out.println("min: " + linkedList.getFirst());
+        System.out.println("max: " + linkedList.getLast());
     }
 
-    public int getNumberOfElementsInSource(final List<Integer> integerList) {
-        return integerList.size();
+    public Set<Integer> convertListIntoSet(List<Integer> list){
+        return new TreeSet<>(list);
     }
 
-    public int getNumberOfDistinctElements(final List<Integer> integerList) {
-        return new LinkedList<>(integerList).size();
+    public LinkedList<Integer> convertSetIntoLinkedList(Set<Integer> set){
+        return new LinkedList<>(set);
     }
 
-    public int getMinimumListValue(final List<Integer> integerList) {
-        return new LinkedList<>(integerList).getFirst();
-
-    }
-
-    public int getMaximumListValue(final List<Integer> integerList) {
-        return new LinkedList<>(integerList).getLast();
-
-    }
 }
